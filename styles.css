@@ -1,0 +1,1053 @@
+/* ============================================
+   STYLES POUR jeu.html
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Orbitron', Arial, sans-serif;
+    color: #fff;
+    background: #000;
+    position: relative;
+    overflow-x: hidden;
+    letter-spacing: 0.5px;
+}
+
+/* Background personnalisé pour la page des jeux - Style Dark */
+body.page-jeux {
+    background: #0a0a0f;
+    position: relative;
+    overflow: hidden;
+}
+
+body.page-jeux::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(30, 30, 50, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(25, 25, 45, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(20, 20, 40, 0.04) 0%, transparent 60%),
+        linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 25%, #0a0a15 50%, #0f0f1a 75%, #0a0a0f 100%);
+    animation: backgroundShift 20s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.page-jeux::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.02) 2px,
+            rgba(255, 255, 255, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.02) 2px,
+            rgba(255, 255, 255, 0.02) 4px
+        );
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Effet qui suit la souris pour la page des jeux - Style Dark */
+body.page-jeux .mouse-follower {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30, 30, 50, 0.15) 0%, rgba(20, 20, 40, 0.08) 30%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    opacity: 0;
+}
+
+body.page-jeux:hover .mouse-follower {
+    opacity: 1;
+}
+
+/* Background personnalisé pour la page d'accueil - Style Dark */
+body.page-accueil {
+    background: #0a0a0f;
+    position: relative;
+    overflow: hidden;
+}
+
+body.page-accueil::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(30, 30, 50, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(25, 25, 45, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(20, 20, 40, 0.04) 0%, transparent 60%),
+        linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 25%, #0a0a15 50%, #0f0f1a 75%, #0a0a0f 100%);
+    animation: backgroundShift 20s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.page-accueil::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.02) 2px,
+            rgba(255, 255, 255, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.02) 2px,
+            rgba(255, 255, 255, 0.02) 4px
+        );
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Effet qui suit la souris - Style Dark */
+.mouse-follower {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30, 30, 50, 0.15) 0%, rgba(20, 20, 40, 0.08) 30%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    opacity: 0;
+}
+
+body.page-accueil:hover .mouse-follower {
+    opacity: 1;
+}
+
+@keyframes backgroundShift {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(2%, 2%) scale(1.05);
+    }
+    66% {
+        transform: translate(-2%, -2%) scale(0.95);
+    }
+}
+
+.container-jeux {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+.big-title {
+    font-family: 'Orbitron', Arial, sans-serif;
+    color: #fff;
+    font-size: 2.95rem;
+    letter-spacing: 2.5px;
+    text-shadow: 0 3px 18px #000a, 0 3px 0 #333, 0 4px 22px #fff4, 0 0px 10px #ffe96a70;
+    margin: 50px 0 12px 0;
+    text-align: center;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    gap: 18px;
+    width: 97%;
+    max-width: 1234px;
+    margin: 38px auto 0 auto;
+}
+
+.jeu-thumb-link {
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.19s, transform 0.15s;
+    box-shadow: 0 4px 24px #01010190, 0 2px 14px #111b;
+    background: #121212;
+    aspect-ratio: 616 / 353;
+}
+
+.jeu-thumb-link:hover, .jeu-thumb-link:focus-visible {
+    transform: translateY(-7px) scale(1.027);
+    box-shadow: 0 10px 36px #ffe96a47, 0 3px 18px #000c;
+}
+
+.jeu-thumb-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 616 / 353;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
+    background: #181818;
+    transition: filter 0.21s;
+    border-bottom: 1.5px solid #363636;
+}
+
+.jeu-thumb-link:hover .jeu-thumb-img,
+.jeu-thumb-link:focus-visible .jeu-thumb-img {
+    filter: brightness(0.82) grayscale(24%);
+}
+
+/* overlay covers entirety on hover, center the game name */
+.jeu-title-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.50); /* semi-transparent covers all image */
+    color: #fff;
+    display: flex;
+    align-items: center;       /* changed from flex-end to center vertically */
+    justify-content: center;   /* center horizontally */
+    opacity: 0;
+    text-align: center;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.28rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    pointer-events: none;
+    transition: opacity 0.18s, background 0.18s;
+    text-shadow: 0 2px 13px #000d, 0 0px 10px #ffe96a70;
+    z-index: 2;
+    padding: 0 14px; /* some breathing space left/right */
+}
+
+.jeu-thumb-link:hover .jeu-title-hover,
+.jeu-thumb-link:focus-visible .jeu-title-hover {
+    opacity: 1;
+    background: rgba(0,0,0,0.63);
+}
+
+.badge-mode-wrapper {
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 3;
+    pointer-events: none;
+    align-items: end;
+}
+
+.badge-mode {
+    width: 32px;
+    height: 16px;
+    background: none;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
+    margin: 0;
+    box-shadow: 0 0 6px #0007;
+}
+
+.badge-mode.solo {
+    width: 23px;
+    height: 12px;
+}
+
+@media (max-width: 650px) {
+    .games-grid {
+        grid-template-columns:1fr;
+    }
+    .jeu-thumb-link {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .badge-mode-wrapper {
+        right: 5px;
+        bottom: 5px;
+    }
+    .badge-mode {
+        width: 17px;
+        height: 10px;
+    }
+    .badge-mode.solo {
+        width: 11px;
+        height: 6px;
+    }
+}
+
+.search-bar-container {
+    margin-top: 24px;
+    margin-bottom: 9px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.07rem;
+    color: #fff;
+    background: #181818 url('data:image/svg+xml;utf8,<svg fill="white" height="18" viewBox="0 0 20 20" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l4.38 4.37a1 1 0 0 1-1.41 1.42l-4.38-4.38zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>') 10px center no-repeat;
+    padding: 9px 18px 9px 38px;
+    border-radius: 20px;
+    border: 1.5px solid #fff;
+    outline: none;
+    width: 320px;
+    max-width: 94vw;
+    box-shadow: 0 2px 8px #000a;
+    transition: border 0.19s, box-shadow 0.19s;
+    letter-spacing: 0.8px;
+}
+
+.search-bar:focus {
+    border: 1.5px solid #fff;
+    box-shadow: 0 3px 12px #fff4;
+    background-color: #212009;
+}
+
+::placeholder,
+.search-bar::placeholder {
+    color: #ffffffd8;
+    font-family: 'Orbitron', Arial, sans-serif;
+    opacity: 1;
+}
+
+@media (max-width: 500px) {
+    .search-bar {
+        font-size: .97rem;
+        padding: 8px 10px 8px 36px;
+        width: 95vw;
+    }
+}
+
+nav {
+    margin-top: 25px;
+}
+
+nav a {
+    color: #fff;
+    background: #111108;
+    text-decoration: none;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.09rem;
+    padding: 10px 27px;
+    border-radius: 18px;
+    border: 2px solid #fff;
+    margin: 0 10px;
+    box-shadow: 0 2px 10px #000b;
+    text-shadow: 0 1px 4px #000c, 0 0px 5px #fff3;
+    transition: background .17s, color .15s, box-shadow .2s, border-color .2s;
+    letter-spacing: .8px;
+}
+
+nav a:hover {
+    background: #ffffff22;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 3px 12px #fff2;
+}
+
+@media (max-width:700px) {
+    .games-grid {grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width:495px) {
+    .games-grid {grid-template-columns:1fr;}
+}
+
+.coming-soon-message {
+    margin-top: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 1.21rem;
+    text-align: center;
+    letter-spacing: .18px;
+    text-shadow: 0 1px 6px #000e, 0 0px 17px #fff7;
+    font-family: 'Orbitron', Arial, sans-serif;
+}
+
+/* Modal Styles */
+.modal-bg {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: modalBgFadeIn 0.28s;
+}
+
+@keyframes modalBgFadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+
+.modal {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 15px;
+    max-width: 405px;
+    width: 96vw;
+    box-shadow: 0 8px 38px #000e, 0 0px 17px #fff5;
+    padding: 28px 26px 22px 26px;
+    font-family: 'Orbitron', Arial, sans-serif;
+    position: relative;
+    text-align: left;
+    animation: modalFadeIn 0.22s;
+}
+
+@keyframes modalFadeIn {
+    from { transform: scale(.95) translateY(40px); opacity:0;}
+    to   { transform: scale(1)   translateY(0); opacity:1;}
+}
+
+.modal h2 {
+    font-family: 'Orbitron', Arial, sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.43rem;
+    margin: 0 0 14px 0;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 6px #000e, 0 0px 17px #fff7;
+}
+
+/* Agrandi le font pour le h2 de Dying Light The Beast */
+#dyinglightthebeast-modal-bg .modal h2,
+#dlb-title {
+    font-size: 2.1rem !important;
+    font-weight: 800;
+    line-height: 1.18;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 480px) {
+    #dyinglightthebeast-modal-bg .modal h2,
+    #dlb-title {
+        font-size: 1.38rem !important;
+    }
+}
+/* Fin font DLB modal */
+
+.modal ul, .modal ol {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.03em;
+    color: #fff;
+    letter-spacing: .15px;
+}
+
+.modal ul {
+    margin: 0 0 15px 0;
+    padding-left: 18px;
+}
+
+.modal ol {
+    margin: 0 0 13px 22px;
+    padding:0;
+}
+
+.modal strong {
+    color: #fff;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 700;
+}
+
+.modal code {
+    background: #222;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 1em;
+    font-family: 'Orbitron', Arial, monospace;
+}
+
+.modal .modal-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.modal .download-btn {
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.13rem;
+    background: #fff;
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 37px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    transition: background .17s, color .13s;
+    text-shadow: 0 1px 8px #000a;
+    box-shadow: 0 2px 14px #0009;
+}
+
+.modal .download-btn:hover {
+    background: #eaeaea;
+    color: #000;
+}
+
+.modal .close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.13rem;
+    cursor: pointer;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: 'Orbitron', Arial, sans-serif;
+    transition: background .13s, color .13s;
+}
+
+.modal .close-btn:hover {
+    background: #ffffff21;
+    color: #fff;
+}
+
+/* ===== DISCORD LOGO BOTTOM LEFT BUBBLE ====== */
+.discord-bubble {
+    position: fixed;
+    bottom: 23px;
+    left: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 32100;
+    user-select: none;
+}
+
+.discord-bubble-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    border-radius: 22px;
+    /* box-shadow removed */
+    /* box-shadow: 0 4px 18px #111b, 0 0 2px #222a; */
+    transition: transform 0.11s;
+}
+
+.discord-bubble-btn:hover,
+.discord-bubble-btn:focus-visible {
+    transform: scale(1.065);
+    /* Remove ALL box-shadow on hover/focus to eliminate the shadow around the logo */
+    box-shadow: none !important;
+}
+
+.discord-bubble-img {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    min-height: 55px;
+    object-fit: contain;
+    border-radius: 16px;
+    /* Remove ALL border/outline: add none (just in case) */
+    border: none !important;
+    outline: none !important;
+    /* keep only the shadow/glow if desired: */
+    box-shadow: none !important;
+    /* Remove the background entirely to avoid the square behind the Discord icon */
+    background: none !important;
+}
+
+.discord-bubble-label {
+    margin-bottom: 9px;
+    margin-left: 4px;
+    margin-right: 0;
+    text-align: left;
+    font-family: 'Orbitron', Arial, sans-serif;
+    letter-spacing: 1.2px;
+    font-size: 1.02rem;
+    font-weight: bold;
+    color: #fff;
+    background: #7289da;
+    /* Remove yellow gradient, set to the semi-transparent #7289da55 */
+    padding: 5px 19px 5px 18px;
+    border-radius: 14px 14px 18px 18px / 12px 12px 20px 20px;
+    box-shadow: 0 3px 13px #000e, 0 0px 8px #7289da54;
+    text-shadow: 0 1px 7px #000e, 0 0px 5px #7289da9c;
+    position: relative;
+    display: inline-block;
+    border: 2px solid #7289da;
+    transition: background 0.2s, color 0.2s;
+}
+
+.discord-bubble-label:after {
+    /* little upward indicator triangle */
+    content: '';
+    position: absolute;
+    left: 36px;
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    border-top: 11px solid #7289da;
+    filter: blur(0.4px);
+}
+
+/* Responsive for mobile */
+@media (max-width: 700px) {
+    .discord-bubble {
+        left: 10px;
+        bottom: 10px;
+    }
+    .discord-bubble-img {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+    }
+    .discord-bubble-label {
+        font-size: 0.92rem;
+        padding: 4px 13px 4px 11px;
+    }
+    .discord-bubble-label:after {
+        left: 22px;
+        bottom: -9px;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid #7289da;
+    }
+}
+
+@media (max-width: 420px) {
+    .discord-bubble-label {
+        font-size: 0.79rem;
+        padding: 3px 8px 3px 8px;
+    }
+    .discord-bubble-img {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+    .discord-bubble-label:after {
+        left: 13px;
+        bottom: -7px;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid #7289da;
+    }
+}
+
+/* ============================================
+   STYLES POUR admin.html (panneau élégant)
+   ============================================ */
+body.page-admin {
+    background: linear-gradient(180deg,#071026 0%, #081022 50%, #060711 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-wrap{
+    width: 94%;
+    max-width: 980px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 10px 40px rgba(2,6,23,0.8), inset 0 1px 0 rgba(255,255,255,0.02);
+    border-radius: 16px;
+    padding: 28px;
+    color: #eef6ff;
+    backdrop-filter: blur(6px) saturate(120%);
+}
+
+.admin-wrap h1{ font-size:1.8rem; margin:0 0 12px 0; font-family: 'Orbitron', Arial, sans-serif; }
+.admin-wrap h3{ font-size:1.05rem; margin-top:0; font-family: 'Orbitron', Arial, sans-serif; }
+
+.admin-grid{ display:flex; gap:22px; align-items:flex-start; }
+.admin-col{ flex:1; min-width:0; }
+
+.admin-input, .admin-select, .admin-text{
+    width:100%;
+    padding:10px 12px;
+    margin:8px 0 12px 0;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    color: #fff;
+    outline: none;
+    transition: box-shadow .15s, transform .08s;
+}
+.admin-input:focus{ box-shadow: 0 6px 22px rgba(30,144,255,0.12); transform: translateY(-1px); }
+
+.admin-btn{
+    display:inline-block;
+    padding:10px 14px;
+    background: linear-gradient(180deg,#2aa0ff,#1a73d8);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+    letter-spacing:0.6px;
+    box-shadow: 0 8px 26px rgba(26,115,216,0.18);
+    transition: transform .12s, box-shadow .12s, opacity .12s;
+}
+.admin-btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 40px rgba(26,115,216,0.22); }
+.admin-btn.secondary{ background: linear-gradient(180deg,#6c6f78,#4b4e56); box-shadow: 0 8px 18px rgba(0,0,0,0.45); }
+.admin-btn.danger{ background: linear-gradient(180deg,#ff6b6b,#ff3b3b); box-shadow: 0 8px 26px rgba(255,80,80,0.18); }
+
+.small-muted{ color: rgba(230,240,255,0.6); font-size:0.95rem; }
+
+.game-item{ display:flex; gap:12px; align-items:center; padding:10px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04)); border:1px solid rgba(255,255,255,0.02); margin-bottom:10px; }
+.game-item img.thumb{ width:120px; height:70px; object-fit:cover; border-radius:6px; border:1px solid rgba(255,255,255,0.04); }
+
+.admin-col #adminGamesList{ max-height:420px; overflow:auto; padding-right:6px; }
+.admin-col #adminGamesList::-webkit-scrollbar{ width:8px; }
+.admin-col #adminGamesList::-webkit-scrollbar-thumb{ background: linear-gradient(180deg,#37475a,#1f2b36); border-radius:8px; }
+
+@media (max-width:900px){ .admin-grid{ flex-direction:column; } .admin-wrap{ padding:18px; } }
+
+
+/* ============================================
+   STYLES POUR index.html
+   ============================================ */
+
+/* Import a cartoon/smooth font (Luckiest Guy is a good fit for a cartoon look) */
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@700&display=swap');
+
+.center-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Styles spécifiques pour index.html - big-title */
+body .big-title {
+    font-family: 'Luckiest Guy', 'Baloo 2', cursive, sans-serif;
+    color: #fff !important;
+    font-size: 3.3rem;
+    letter-spacing: 2.5px;
+    margin-bottom: 18px;
+    /* Cartoon-style thick border/contour */
+    text-shadow:
+        -3px -3px 0 #18161e,
+        3px -3px 0 #18161e,
+        -3px 3px 0 #18161e,
+        3px 3px 0 #18161e,
+        0 0px 28px #5003,
+        0 6px 40px #111a;
+    background: none;
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+.subtitle {
+    font-family: 'Baloo 2', sans-serif;
+    color: #fff !important;
+    font-size: 1.4rem;
+    margin-bottom: 22px;
+    letter-spacing: .6px;
+    text-shadow:
+        -2px -2px 0 #373241,
+        2px -2px 0 #373241,
+        -2px 2px 0 #373241,
+        2px 2px 0 #373241,
+        0 1px 5px #0005,
+        0 0px 12px #fff3;
+}
+
+/* Styles spécifiques pour index.html - nav */
+body .center-container nav {
+    margin-top: 32px;
+}
+
+body .center-container nav a {
+    color: #fff !important;
+    background: #111;
+    font-family: 'Baloo 2', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.16rem;
+    padding: 10px 28px;
+    border-radius: 20px;
+    transition: background .19s, color .17s, box-shadow .21s;
+    border: 2px solid #555;
+    margin: 0 10px;
+    box-shadow: 0 2px 18px #0007;
+    /* Cartoon contour for link text */
+    text-shadow:
+        -2px -2px 0 #282828,
+        2px -2px 0 #282828,
+        -2px 2px 0 #282828,
+        2px 2px 0 #282828,
+        0 1px 8px #0007;
+}
+
+body .center-container nav a:hover {
+    background: #222;
+    color: #fff !important;
+    box-shadow: 0 4px 30px #000a, 0 2px 8px #fff2;
+    border-color: #fff;
+    /* Suppressed yellow contour */
+    text-shadow:
+        -2px -2px 0 #282828,
+        2px -2px 0 #282828,
+        -2px 2px 0 #282828,
+        2px 2px 0 #282828,
+        0 2px 12px #282828;
+}
+
+@media (max-width: 600px) {
+    body .big-title { font-size: 2.0rem; }
+    .subtitle { font-size: 1.08rem;}
+    body .center-container nav a { font-size: .98rem; padding: 9px 15px; }
+}
+
+/* Force all text to be white for index.html */
+body * {
+    color: #fff !important;
+}
+
+/* ============================================
+   STYLES POUR cheat.html
+   ============================================ */
+
+/* Styles spécifiques pour cheat.html - body */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Styles spécifiques pour cheat.html - big-title */
+body .center-container .big-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    font-size: 3.2rem;
+    letter-spacing: 2.5px;
+    text-shadow: 0 3px 22px #000b, 0 1px 0 #333, 0 6px 40px #111a;
+    margin-bottom: 18px;
+    background: none;
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+body .center-container .subtitle {
+    color: #fff;
+    font-size: 1.35rem;
+    margin-bottom: 32px;
+    letter-spacing: .5px;
+    text-shadow: 0 1px 5px #0005, 0 0px 12px #fff3;
+    text-align: center;
+}
+
+.dev-box {
+    background: #111;
+    border: 1.5px solid #222;
+    border-radius: 14px;
+    padding: 34px 35px 31px 35px;
+    box-shadow: 0 2px 22px #19191a2b;
+    margin-bottom: 22px;
+    max-width: 410px;
+}
+
+.dev-message {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.25rem;
+    color: #aaa;
+    text-align: center;
+    letter-spacing: 0.3px;
+    line-height: 1.55;
+}
+
+/* Styles spécifiques pour cheat.html - nav */
+body .center-container nav {
+    margin-top: 30px;
+}
+
+body .center-container nav a {
+    color: #fff;
+    background: #111;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.11rem;
+    padding: 10px 28px;
+    border-radius: 20px;
+    transition: background .19s, color .17s, box-shadow .21s;
+    border: 2px solid #555;
+    margin: 0 10px;
+    box-shadow: 0 2px 18px #0007;
+}
+
+body .center-container nav a:hover {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 4px 30px #000a, 0 2px 8px #fff2;
+    border-color: #fff;
+    text-shadow: none;
+}
+
+@media (max-width: 600px) {
+    body .center-container .big-title { font-size: 2rem; }
+    body .center-container .subtitle { font-size: 1.09rem;}
+    .dev-box {padding: 18px 8px;}
+    body .center-container nav a { font-size: .98rem; padding: 9px 15px; }
+}
+
+/* ============================================
+   NOTIFICATION DISCORD SUPPORT
+   ============================================ */
+.discord-notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(114, 137, 218, 0.95) 0%, rgba(88, 101, 242, 0.95) 100%);
+    color: #fff;
+    padding: 12px 20px;
+    z-index: 100000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-out;
+    font-family: 'Orbitron', Arial, sans-serif;
+}
+
+.discord-notification.show {
+    transform: translateY(0);
+}
+
+.discord-notification-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    position: relative;
+    padding-right: 40px;
+}
+
+.discord-notification-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.discord-notification-link {
+    background: #fff !important;
+    color: #7289da !important;
+    padding: 6px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+.discord-notification-link:hover {
+    background: #f0f0f0 !important;
+    color: #7289da !important;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.discord-notification-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.discord-notification-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 600px) {
+    .discord-notification-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .discord-notification-text {
+        font-size: 0.85rem;
+    }
+    
+    .discord-notification-link {
+        padding: 5px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .discord-notification-close {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+    }
+}
+

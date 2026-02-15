@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - 807Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Styles moved to styles.css -->
+</head>
+<body class="page-admin">
+    <div class="admin-wrap">
+        <h1>Admin Panel</h1>
+        <div id="loginArea">
+            <p class="small-muted">Connectez-vous avec vos identifiants pour accéder au panneau.</p>
+            <label>Identifiant</label>
+            <input id="adminUser" class="admin-input" placeholder="Identifiant">
+            <label>Mot de passe</label>
+            <input id="adminPass" class="admin-input" type="password" placeholder="Mot de passe">
+            <div style="margin-top:8px;">
+                <button id="loginBtn" class="admin-btn">Se connecter</button>
+            </div>
+            <div id="loginMsg" class="small-muted" style="margin-top:8px"></div>
+        </div>
+
+        <div id="panelArea" style="display:none;margin-top:18px;">
+            <div class="admin-grid">
+                <div class="admin-col">
+                    <h3>Ajouter un jeu</h3>
+                    <label>Mode</label>
+                    <div>
+                        <label><input type="radio" name="mode" value="multi" checked> Multijoueur</label>
+                        &nbsp;&nbsp;
+                        <label><input type="radio" name="mode" value="solo"> Solo</label>
+                    </div>
+                    <label>Image (URL)</label>
+                    <input id="gameImage" class="admin-input" placeholder="https://.../image.jpg">
+                    <label>Nom du jeu / film</label>
+                    <input id="gameTitle" class="admin-input" placeholder="Titre du jeu">
+                    <label>Lien de téléchargement</label>
+                    <input id="gameLink" class="admin-input" placeholder="https://...">
+                    <div style="margin-top:8px;">
+                        <button id="addGameBtn" class="admin-btn">Ajouter</button>
+                        <button id="logoutBtn" class="admin-btn secondary" style="margin-left:8px;">Se déconnecter</button>
+                    </div>
+                    <div id="addMsg" class="small-muted" style="margin-top:8px"></div>
+                </div>
+                <div class="admin-col">
+                    <h3>Jeux ajoutés</h3>
+                    <div id="adminGamesList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
