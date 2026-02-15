@@ -10,6 +10,17 @@
 <body class="page-admin">
     <div class="admin-wrap">
         <h1>Admin Panel</h1>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <div style="flex:1">
+                <h2 style="margin:0;font-size:1rem;font-weight:600;">Connexion admin</h2>
+                <div class="small-muted" style="margin-top:4px">Panneau sécurisé — accès administrateur</div>
+            </div>
+            <div style="text-align:right">
+                <div class="small-muted">Realtime:</div>
+                <div id="realtimeStatus" class="small-muted">disconnected</div>
+            </div>
+        </div>
+
         <div id="loginArea">
             <p class="small-muted">Connectez-vous avec vos identifiants pour accéder au panneau.</p>
             <label>Identifiant</label>
